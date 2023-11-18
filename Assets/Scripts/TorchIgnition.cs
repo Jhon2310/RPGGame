@@ -3,15 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenChest : MonoBehaviour
+public class TorchIgnition : MonoBehaviour
 {
-    [SerializeField] private Chest _chest;
+    public event Action LightTheTorch;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            _chest.Open();
+            LightTheTorch?.Invoke();
         }
     }
+
+    
 }

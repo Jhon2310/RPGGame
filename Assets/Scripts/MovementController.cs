@@ -15,16 +15,15 @@ public class MovementController : MonoBehaviour
     private void Update()
     {
         // Перемещаем персонажа в направлении _destination.
-        
-        var ray = _camera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray,out var hitInfo))
+        if (Input.GetMouseButton(0))
         {
-            _destination = hitInfo.point;
-            if (Input.GetMouseButton(0))
+            var ray = _camera.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out var hitInfo))
             {
+                _destination = hitInfo.point;
+
                 _navMeshAgent.SetDestination(_destination);
             }
-            
         }
         // TODO: Получите точку, по которой кликнули мышью и задайте ее вектор в поле _destination.
     }

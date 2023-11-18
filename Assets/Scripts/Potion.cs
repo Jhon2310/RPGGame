@@ -5,14 +5,17 @@ using UnityEngine;
 
 public class Potion : MonoBehaviour
 {
-    [SerializeField] private GameObject _gameObject;
-    [SerializeField] private Outline _playerOutline;
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            _playerOutline.OutlineWidth = 2;
-            Destroy(_gameObject);
-        }
-    }
+   [SerializeField] private float _outlineWidth = 2f;
+   [SerializeField] private Outline _outlinePlayer;
+
+   
+
+   private void OnTriggerEnter(Collider other)
+   {
+      if (other.CompareTag("Player"))
+      {
+         _outlinePlayer.OutlineWidth = _outlineWidth;
+         Destroy(this.gameObject);
+      }
+   }
 }

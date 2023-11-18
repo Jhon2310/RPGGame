@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 
 public class Chest : MonoBehaviour
 {
+    
+    
     private Animator _animator;
-
+    
     private void Awake()
     {
         _animator = GetComponent<Animator>();

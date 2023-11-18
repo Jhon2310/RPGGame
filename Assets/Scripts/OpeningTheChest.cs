@@ -3,15 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fire : MonoBehaviour
+public class OpeningTheChest : MonoBehaviour
 {
-    [SerializeField] private GameObject _fire;
+    public event Action OpenTheChest;
+    
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            _fire.SetActive(_fire);
+            OpenTheChest?.Invoke();
         }
     }
 }
